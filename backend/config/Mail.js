@@ -1,28 +1,16 @@
-import nodemailer from "nodemailer"
-import dotenv from "dotenv"
+import { Resend } from 'resend'
+import dotenv from 'dotenv'
 dotenv.config()
 
-const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 587,
-  secure: false,
-  requireTLS: true,
-  auth: {
-    user: process.env.EMAIL,
-    pass: process.env.EMAIL_PASS,
-  },
-  tls: {
-    rejectUnauthorized: false
-  }
-})
+const resend = new Resend(process.env.RESEND_API_KEY)
 
 const sendMail = async (to, otp) => {
-  await transporter.sendMail({
-    from: process.env.EMAIL,
-    to,
-    subject: "Reset Your Password",
-    html: `<p>Your OTP for password reset is <b>${otp}</b>. It expires in 5 minutes.</p>`
-  })
+    await resend.emails.send({
+        from: 'onboarding@resend.dev',
+        to,
+        subject: 'Reset Your Password',
+        html: `<p>Your OTP for password reset is <b>${otp}</b>. It expires in 5 minutes.</p>`
+    })
 }
 
 export default sendMail
