@@ -28,6 +28,8 @@ Built with the MERN stack, Socket.IO, Redux Toolkit, and Tailwind CSS.
 
 </div>
 
+🔗 **Live Demo:** [wave-qdjc.onrender.com](https://wave-qdjc.onrender.com/)
+
 ## ✨ Features
 
 - 🔐 **Authentication** — sign up / sign in with JWT (cookie-based sessions), OTP email verification, and forgot/reset password flow (via Resend / Nodemailer)
